@@ -1,3 +1,4 @@
+import './animalShow.css';
 import { useState } from 'react';
 import bird from './svg/bird.svg';
 import cat from './svg/cat.svg';
@@ -24,9 +25,9 @@ function AnimalShow({ type }){
         setCountClick(countClick+1)
     }
     return (
-        <div onClick={bigHeart}>
-            <img alt='animal' src={svgMap[type]} />
-            <img alt='heart symbol' src={heart} style={{width: 10+10*countClick + 'px'}}/>
+        <div className='animal-show' onClick={bigHeart}>
+            <img className='animal' alt='animal' src={svgMap[type]} />
+            <img className='heart' alt='heart symbol' src={heart} style={{width: 10+10*countClick + 'px'}}/>
         </div>
     );
 }
