@@ -1,3 +1,4 @@
+// Nested lists in one component 
 
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';

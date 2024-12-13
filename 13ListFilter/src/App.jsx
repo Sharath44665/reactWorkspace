@@ -1,3 +1,4 @@
+// Splitting a list in two 
 
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
