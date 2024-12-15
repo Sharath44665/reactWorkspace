@@ -41,7 +41,11 @@ export default function About() {
   return (
     <div style={myStyle} >
         <h2 >About us</h2>
+        <center>
         <button type="button" className={btnText.newClass} onClick={setTheme} >{btnText.text}</button>
+
+        </center>
+       
 
       <div className="accordion" id="accordionExample" style={myStyle}>
         <div className="accordion-item" style={myStyle}>
