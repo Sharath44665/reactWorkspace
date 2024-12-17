@@ -35,9 +35,11 @@ export default function TextForm(props){
     return (
         <>
         <div>
+        
             <h2>{props.heading} </h2>
+            
             <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
+                <textarea className="form-control" style={props.theme === 'dark'?{backgroundColor:'#d0e5fa'}:{backgroundColor:'white'} } value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
             </div>
 
             <button className="btn btn-primary mx-2" onClick={handleUpperClick}  >Convert to UPPERCASE</button>
@@ -51,7 +53,7 @@ export default function TextForm(props){
             <p>{0.008 * getWords(text) } minutes to read</p>
 
             <h2>Preview</h2>
-            <p>{text}</p>
+            <p>{text.length >0?text:'enter something to preview'}</p>
         </div>
         </>
         
