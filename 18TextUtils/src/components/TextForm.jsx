@@ -4,7 +4,14 @@ import { useState } from "react"
 export default function TextForm(props){
 
     const handleUpperClick = () => {
-       
+        
+        if (text === ''){
+            props.setCustomAlert(': Hey its empty', 'warning')
+        }
+        else{
+            props.setCustomAlert(': upper case Done', 'success')
+        }
+        
         let newText = text.toUpperCase()
         setText(newText)
     }
@@ -14,6 +21,12 @@ export default function TextForm(props){
     }
 
     const handleLowerClick = () => {
+        if (text === ''){
+            props.setCustomAlert(': Hey its empty', 'warning')
+        }
+        else{
+            props.setCustomAlert(': Lower case Done', 'success')
+        }
         const newText = text.toLowerCase();
         setText(newText)
     }
