@@ -4,6 +4,7 @@ import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import MyAlert from './components/MyAlert';
+import { BrowserRouter, Routes, Route } from "react-router";
 import { useState } from "react";
 
 function App(){
@@ -34,6 +35,7 @@ function App(){
       document.body.style.color = 'black';
       createMyAlert("light mode enabled", 'success')
       
+      
     }
   }
 
@@ -42,8 +44,11 @@ function App(){
       <Navbar title="Text Utils" aboutText="about_text_utils" theme={isDark} toggleTheme={darkMode} />
       <div className="container">
         <MyAlert descriptionAlert={getAlert} />
-        <TextForm heading="Enter ur text to analyze" theme={isDark} setCustomAlert={createMyAlert} />
-         
+        {/* <TextForm heading="Enter ur text to analyze" theme={isDark} setCustomAlert={createMyAlert} /> */}
+        <Routes>
+        <Route index element={<TextForm heading="Enter ur text to analyze" theme={isDark} setCustomAlert={createMyAlert} />} />
+        <Route path="about" element={<About />} />
+        </Routes>
         {/* <About />  */}
       </div>
 
