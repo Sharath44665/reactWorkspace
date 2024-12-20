@@ -38,11 +38,8 @@ export default function TextForm(props){
     const [text, setText] = useState("enter text here");
 
     const getWords = (text) => {
-        let wordsCounter = text.split(" ").length;
-        
-        if (text.endsWith(" ") || text == ""){
-            return wordsCounter - 1;
-        }
+        let wordsCounter = text.split(/\s+/).filter((element) => element.length !== 0 ).length;
+  
         return wordsCounter;
     }
     return (
@@ -55,9 +52,9 @@ export default function TextForm(props){
                 <textarea className="form-control" style={props.theme === 'dark'?{backgroundColor:'#d0e5fa'}:{backgroundColor:'white'} } value={text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
             </div>
 
-            <button className="btn btn-primary mx-2" onClick={handleUpperClick}  >Convert to UPPERCASE</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleUpperClick}  >Convert to UPPERCASE</button>
 
-            <button className="btn btn-primary mx-2" onClick={handleLowerClick}  >Convert to lowercase</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleLowerClick}  >Convert to lowercase</button>
             <button type="button" className="btn btn-secondary mx-2" onClick={handleClearClick} >clear</button>
         </div>
         <div className="container">
