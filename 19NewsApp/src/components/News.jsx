@@ -65,14 +65,15 @@ export class News extends Component {
     }
   }
 
-  //  async componentDidMount(){
-  //   let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd"
+   async componentDidMount(){
+    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd"
 
     
-  //   let data = await fetch(url);
-  //   let parsedData = await data.json()
-
-  // }
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    // console.log(parsedData)
+    this.setState({ articles : parsedData.articles  })
+  }
 
   render() {
     return (
@@ -82,7 +83,7 @@ export class News extends Component {
           {
             this.state.articles.map( (element) => {
               return (<div className="col-md-4 my-3" key={element.url}>
-                <NewsItem  title={element.title.slice(0,33)} description={element.description.slice(0,80)} imageUrl={element.urlToImage} newsUrl={element.url} />
+                <NewsItem  title={element.title?element.title.slice(0,33):""} description={element.description?element.description.slice(0,80):""} imageUrl={element.urlToImage} newsUrl={element.url} />
               </div>);
 
             })
