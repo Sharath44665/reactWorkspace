@@ -8,20 +8,57 @@ export class News extends Component {
     console.log("constructor- news component")
     this.state = {
       articles: [],
-      loading: false
+      loading: false,
+      page: 1
     }
   }
 
    async componentDidMount(){
-    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd"
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page}&pageSize=10`
 
     
     let data = await fetch(url);
     let parsedData = await data.json()
     console.log(parsedData)
-    this.setState({ articles : parsedData.articles  })
+    this.setState({ articles : parsedData.articles  }) // setting state
   }
 
+  handlePrevious = async () => {
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page - 1}&pageSize=10`
+
+    
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    
+
+    this.setState ({
+      page: this.state.page -= 1,
+      articles : parsedData.articles,
+      totalResults: parsedData.totalResults,
+    })
+  }
+
+  handleNext = async () =>
+  {
+    if (this.state.page + 1 > Math.ceil(this.state.totalResults/10)) {
+
+    }
+    else{
+
+      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page + 1}&pageSize=10`
+  
+      
+      let data = await fetch(url);
+      let parsedData = await data.json()
+      
+  
+      this.setState ({
+        page: this.state.page += 1,
+        articles : parsedData.articles,
+        
+      })
+    }
+  }
   render() {
     return (
       <div className='container my-3'>
@@ -37,8 +74,12 @@ export class News extends Component {
           }
 
         </div>
+        <div className="d-flex justify-content-between">
+          {console.log(this.url)}
+          <button type="button" disabled={this.state.page <= 1} className="btn btn-info" onClick={this.handlePrevious}> &laquo; Prev</button>
+          <button type="button" className="btn btn-info" onClick={this.handleNext}>next &raquo;</button>
 
-
+        </div>
 
       </div>
     )
