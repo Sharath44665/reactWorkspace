@@ -31,3 +31,9 @@ function Header() {
 }
 
 ```
+
+### how to make network slow?
+
+> by default network -> no throttling
+
+inspect -> network (tab) -> click on throttling -> select slow 4g
