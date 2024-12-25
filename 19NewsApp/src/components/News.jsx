@@ -8,8 +8,7 @@ export class News extends Component {
     return sentence.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   }
   constructor(props) {
-    super(props);
-    // console.log("constructor- news component")
+    super(props); 
     this.state = {
       articles: [],
       loading: false,
@@ -24,18 +23,21 @@ export class News extends Component {
 
 
   async updateNews() {
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page}&pageSize=${this.props.pageSize}`
+    this.props.setProgress(10)
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
 
     this.setState({ loading: true })
 
     let data = await fetch(url);
+    this.props.setProgress(50)
     let parsedData = await data.json()
-    // console.log(parsedData)
+    this.props.setProgress(80)
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     }) // setting state
+    this.props.setProgress(100)
 
   }
 
@@ -65,7 +67,7 @@ export class News extends Component {
   fetchMoreData = async () => {
     this.setState({page: this.state.page + 1})
 
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page}&pageSize=${this.props.pageSize}`
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`
 
     this.setState({ loading: true })
 
@@ -84,7 +86,7 @@ export class News extends Component {
 
       <>
 
-        {/* {this.state.loading && <Spinner />} */}
+        {this.state.loading && <Spinner />}
         <h2 className='text-center'>Top headlines</h2>
         <InfiniteScroll
           dataLength={this.state.articles.length}

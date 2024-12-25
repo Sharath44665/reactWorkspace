@@ -3,16 +3,30 @@ import React, { Component } from 'react'
 export class NewsItem extends Component {
 
     render() {
-        let { title, description, imageUrl, newsUrl, publishedAt, author, sourceNews } = this.props;
+        let { title, description, imageUrl, newsUrl, publishedAt, author, sourceNews, } = this.props;
         return (
             <div>
-                <div className="card"   >
-                    <img src={imageUrl} className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <span className="position-absolute top-0 translate-middle badge rounded-pill bg-warning" style={{ left: '90%' }} >
-                            {sourceNews}
 
-                        </span>
+                <div className="card"   >
+
+
+                    <img src={imageUrl} className="card-img-top" alt="..." />
+                    <div style={{
+                            display: 'flex',
+                            justifyContent: 'flex-end',
+                            position: 'absolute',
+                            right: 0
+                        }}>
+                            <span className=" badge rounded-pill text-bg-info" >
+                                {sourceNews}
+
+                            </span>
+
+                        </div>
+                    <div className="card-body">
+                        
+
+
                         <h5 className="card-title">{title} </h5>
                         <p className="card-text">{description} </p>
                         <p className="blockquote-footer">{author} published at: {new Date(publishedAt).toGMTString().split(' ').slice(0, -2).join(' ')}</p>

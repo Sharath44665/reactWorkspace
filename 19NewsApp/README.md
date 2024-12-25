@@ -80,3 +80,33 @@ offline:
 ![react component lifecycle](./img/react_component_lifecycle.png)
 
 online: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+## How ot access VITE OR REACT API KEYS
+
+- create file `.env.local` in root folder (note: not inside `demoapp/src/`)
+
+for vite react: 
+
+``` 
+VITE_API_MY_NEWS_API_KEY='demo_api_key'
+```
+
+for create-react-app :
+
+```
+REACT_APP_API_MY_NEWS_API_KEY='demo_api_key'
+```
+
+- next goto  `src/app.jsx`
+
+for vite react:
+ 
+``` jsx
+apiKey = import.meta.env.VITE_API_MY_NEWS_API_KEY
+```
+ 
+for create-react-app :
+
+``` jsx
+apiKey = process.env.REACT_APP_API_MY_NEWS_API_KEY
+```
