@@ -3,16 +3,22 @@ import NewsItem from './NewsItem'
 import { Spinner } from './Spinner';
 
 export class News extends Component {
-
-  constructor() {
-    super();
+  capitalizeSentence = (sentence)  => {
+    return sentence.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
+  constructor(props) {
+    super(props);
     // console.log("constructor- news component")
     this.state = {
       articles: [],
       loading: false,
       page: 1
     }
+
+    document.title = `${this.capitalizeSentence(this.props.category)} - News Today`
   }
+
+  
 
   async updateNews() {
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.countryName}&category=${this.props.category}&apiKey=b1e44374d9d34cbda3fa87df5a50f0fd&page=${this.state.page}&pageSize=${this.props.pageSize}`
