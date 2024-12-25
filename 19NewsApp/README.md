@@ -100,7 +100,7 @@ REACT_APP_API_MY_NEWS_API_KEY='demo_api_key'
 - next goto  `src/app.jsx`
 
 for vite react:
- 
+
 ``` jsx
 apiKey = import.meta.env.VITE_API_MY_NEWS_API_KEY
 ```
@@ -110,3 +110,15 @@ for create-react-app :
 ``` jsx
 apiKey = process.env.REACT_APP_API_MY_NEWS_API_KEY
 ```
+
+**Note**: mostly class based components are not used, because react devs highly used function based component
+
+## Hooks
+
+commonly used react hooks
+
+- useState
+- useEffect
+- useContext
+- useRef
+
