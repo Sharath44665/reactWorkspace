@@ -3,12 +3,8 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    obj ={
-        msg: 'success',
-        demo: 'demo msg'
-    }
-
-    res.json(obj)
+    console.log(req.body);
+    res.send("something sent")
 })
 
 module.exports = router
