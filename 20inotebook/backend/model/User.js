@@ -1,6 +1,6 @@
 // import mongoose from 'mongoose';
 const mongoose = require('mongoose')
-const { Schema } = mongoose;
+const { Schema } = mongoose; 
 
 const UserSchema = new Schema({
   name:{
@@ -12,7 +12,7 @@ const UserSchema = new Schema({
       required: true,
       unique: true
   },
-  password:{
+  password:{ 
       type: String,
       required: true
   },
@@ -25,9 +25,9 @@ const UserSchema = new Schema({
 });
 
 // module.exports = UserSchema;
-
-// module.exports = User;
-module.exports = mongoose.model('user', UserSchema);
+User = mongoose.model('user', UserSchema);
+User.createIndexes()
+module.exports = User;
 
 
 
