@@ -1,5 +1,6 @@
-import mongoose from 'mongoose';
-// const { Schema } = mongoose;
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose')
+const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   name:{
@@ -19,6 +20,14 @@ const UserSchema = new Schema({
       type: Date,
       default: Date.now
   },
+  
+  
 });
 
+// module.exports = UserSchema;
+
+// module.exports = User;
 module.exports = mongoose.model('user', UserSchema);
+
+
+
