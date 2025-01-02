@@ -1,7 +1,9 @@
 const { body, validationResult } = require('express-validator');
 const express = require('express');
 const router = express.Router();
-const User = require('../model/User.js')
+const User = require('../model/User.js');
+const bcrypt = require('bcryptjs');
+
 
 
 router.post('/signin', [
@@ -20,13 +22,17 @@ router.post('/signin', [
         if (user) {
             return res.status(400).json({ error: 'sorry this emailId already exist in our db' })
         }
+
+        const salt = await bcrypt.genSaltSync(10);
+        const secPass = await bcrypt.hash(req.body.password, salt)
+
         user = await User.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: secPass
         })
 
-        return res.status(200).json({ msg: 'success' })
+        return res.status(200).json({ msg: 'success', logged_user: user })
     }
     catch (err) {
         console.error(err);
