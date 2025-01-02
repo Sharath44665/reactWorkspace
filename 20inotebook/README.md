@@ -50,6 +50,46 @@ module.exports = router
 
 ![express validation demo](./img/express_validation_demo.png)
 
+## inserting bcryptjs and jsonwebtoken (jwt)
 
+in auth.js
 
+``` js 
+// some code here
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = "my demo secret !!!"
+
+// some code here
+
+        const salt = await bcrypt.genSaltSync(10);
+        const secPass = await bcrypt.hash(req.body.password, salt)
+
+        user = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: secPass
+        })
+        const data = {
+            user : {
+                id : user.id
+            }
+        }
+        const jwtData = jwt.sign(data, JWT_SECRET);
+        console.log(jwtData)
+        return res.status(200).json({ msg: 'success', logged_user: user })
+    }
+// some code here
+
+```
+
+output: 
+
+console.log will gives something like this:
+
+```
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc3NjNmNzdlMTNlMGE2NzNiMTBmZTRkIn0sImlhdCI6MTczNTgwMjc0M30._lvO5_U8Nxj8IH_998saNGSP7yBiv4FXuHwWhSKzlTE
+```
+
+![sendingJsonWebToken.png](./img/sendingJsonWebToken.png)

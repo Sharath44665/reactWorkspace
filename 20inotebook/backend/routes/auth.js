@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/User.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
-
-
+const JWT_SECRET = "my demo secret !!!"
 router.post('/signin', [
     body('name').isLength({ min: 3 }).withMessage("minimum 3 charecters required"),
     body('email').isEmail(),
@@ -31,8 +31,14 @@ router.post('/signin', [
             email: req.body.email,
             password: secPass
         })
-
-        return res.status(200).json({ msg: 'success', logged_user: user })
+        const data = {
+            user : {
+                id : user.id
+            }
+        }
+        const authToken = jwt.sign(data, JWT_SECRET);
+        
+        return res.status(200).json({ msg: 'success', authToken: authToken})
     }
     catch (err) {
         console.error(err);
