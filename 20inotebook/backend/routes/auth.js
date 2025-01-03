@@ -4,8 +4,11 @@ const router = express.Router();
 const User = require('../model/User.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const fetchUser = require('../middleware/fetchUser.js');
 
 const JWT_SECRET = "my demo secret !!!"
+
+// create user route
 router.post('/createuser', [
     body('name').isLength({ min: 3 }).withMessage("minimum 3 charecters required"),
     body('email').isEmail(),
@@ -47,6 +50,8 @@ router.post('/createuser', [
     // res.send(req.body)
 })
 
+
+// login user route
 router.post( '/login', [
     body('email').isEmail().withMessage('email cannot be blank'),
     body('password').exists().withMessage('password cannot be blank'),
@@ -90,5 +95,18 @@ router.post( '/login', [
 
         
     })
+
+// getuser router
+router.post('/getuser', fetchUser, async (req, res) => {
+    try{
+        const userid = req.userFound.id;
+        const userdata = await User.findById(userid).select('-password') // only exclude password and select everything
+        res.send(userdata)
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).send("its not you, its our server error");
+    }
+})
 
 module.exports = router
