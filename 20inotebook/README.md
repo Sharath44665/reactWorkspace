@@ -93,3 +93,19 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc3NjNmNzdlMTNlMGE2NzN
 ```
 
 ![sendingJsonWebToken.png](./img/sendingJsonWebToken.png)
+
+## get user from token
+
+check codes in 
+- auth.js
+- fetchUser.js
+
+when incorrect token:
+
+![authtokenGetUser.png](./img/authtokenGetUser.png)
+
+when its correct token:
+
+![authtokenGetUser2.png](./img/authtokenGetUser2.png)
+
+
