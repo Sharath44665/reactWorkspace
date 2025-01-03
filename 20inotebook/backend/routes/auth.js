@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = "my demo secret !!!"
-router.post('/signin', [
+router.post('/createuser', [
     body('name').isLength({ min: 3 }).withMessage("minimum 3 charecters required"),
     body('email').isEmail(),
     body('password').isLength({ min: 5 }).withMessage("minimum password length is 5"),
@@ -46,5 +46,49 @@ router.post('/signin', [
     }
     // res.send(req.body)
 })
+
+router.post( '/login', [
+    body('email').isEmail().withMessage('email cannot be blank'),
+    body('password').exists().withMessage('password cannot be blank'),
+    ], async (req, res) => {
+        const errors = validationResult(req)
+
+        
+
+        if (!errors.isEmpty()){
+            return res.status(400).json({errors: errors.array()});
+        }
+        
+        const {email, password} = req.body;
+        try {
+            let userOne = await User.findOne({email});
+
+            if (!userOne){
+                return res.status(400).json({error_msg: "hello... put a right credentials"})
+            }
+
+            const passwordCompare = await bcrypt.compare(password, userOne.password)
+
+            if (!passwordCompare){
+                return res.status(400).json({error_msg: "hello... put a right credentials"})
+            }
+
+
+            const data = {
+                userFound : {
+                    id: userOne.id
+                }
+            }
+
+            const authToken = jwt.sign(data, JWT_SECRET)
+            res.json({msg: 'success',authToken})
+        } 
+        catch(error){
+            console.log(error)
+            res.status(500).send("its not you, its our server error")
+        }
+
+        
+    })
 
 module.exports = router
