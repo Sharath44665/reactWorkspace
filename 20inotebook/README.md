@@ -129,5 +129,27 @@ show all notes:
 
 ![allNotes.png](./img/allNotes.png)
 
+## updating notes
+
+changes made in `backend/notes.js`
+
+headers: 
+
+![200~updateNoteErrorOne.png](./img/updateNoteErrorOne.png)
+
+error1:
+
+![updateNoteErrorOne2.png](./img/updateNoteErrorOne2.png)
+
+error2:
+
+![updateNoteErrorOne3.png](./img/updateNoteErrorOne3.png)
+
+success:
+
+![updateNoteSuccess.png](./img/updateNoteSuccess.png)
+
+
+
 
 
