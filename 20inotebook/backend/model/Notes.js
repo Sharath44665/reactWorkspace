@@ -4,6 +4,10 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
+    user:{
+        type:mongoose.Schema.Types.ObjectId, // adding foreign key
+        ref: 'user' // must match from User.js -> User = mongoose.model('user', UserSchema);
+    },
     title:{
         type: String,
         required: true

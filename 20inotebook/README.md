@@ -108,4 +108,26 @@ when its correct token:
 
 ![authtokenGetUser2.png](./img/authtokenGetUser2.png)
 
+## adding notes and fetching all notes
+
+changes are made in 
+- model/Notes.js
+- backend/notes.js
+
+
+add headers: 
+
+![addNoteHeaders.png](./img/addNoteHeaders.png)
+
+add Notes (body):
+
+![addNoteBody.png](./img/addNoteBody.png)
+
+show all notes:
+- thunder client body is not required
+- auth-token is required
+
+![allNotes.png](./img/allNotes.png)
+
+
 
