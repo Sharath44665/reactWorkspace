@@ -155,6 +155,18 @@ changes to be made in `routes/notes.js`
 
 ![deleteNotes_inotebook.png](./img/deleteNotes_inotebook.png)
 
+## Running both servers
+
+check the scripts in `package.json`
+
+``` 
+"both": "concurrently \"npm run dev\" \"nodemon backend/index.js\""
+```
+
+the above code runs both vite react and nodemon for backend
+
+
+
 
 
 
