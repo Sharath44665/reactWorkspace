@@ -149,7 +149,11 @@ success:
 
 ![updateNoteSuccess.png](./img/updateNoteSuccess.png)
 
+## deleting notes
 
+changes to be made in `routes/notes.js`
+
+![deleteNotes_inotebook.png](./img/deleteNotes_inotebook.png)
 
 
 
