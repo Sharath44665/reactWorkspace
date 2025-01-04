@@ -165,6 +165,97 @@ check the scripts in `package.json`
 
 the above code runs both vite react and nodemon for backend
 
+## using create context
+
+`NoteContext.jsx` :
+
+``` jsx
+
+import { createContext } from "react";
+
+const NoteContext = createContext()
+
+export default NoteContext; 
+
+```
+
+`NoteState.jsx` :
+
+``` jsx
+import NoteContext from "./NoteContext";
+
+const NoteState = (props) => {
+    const state = {
+        "name": "sharath",
+        "class" : "7a"
+    }
+    return (
+        <NoteContext.Provider value={state} >
+            {props.children}
+        </NoteContext.Provider>
+    )
+}
+
+export default NoteState;
+```
+
+`About.jsx` : 
+
+``` jsx
+import React, { useContext } from 'react';
+import noteContext from '../context/notes/NoteContext';
+
+function About() {
+  const a = useContext(noteContext)
+  return (
+    <div>this is About {a.name} and he is in {a.class}</div>
+  )
+}
+
+export default About
+```
+
+`App.jsx` :
+
+``` jsx
+import Navbar from './components/Navbar'
+import { Home } from './components/Home'
+import { Routes, Route } from "react-router";
+import About from './components/About'
+import NoteState from './context/notes/NoteState'
+// import './App.css'
+
+function App() {
+
+
+  return (
+    <>
+      <NoteState>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </NoteState>
+
+    </>
+  )
+}
+
+export default App
+```
+
+next do:
+
+```
+npm run both
+```
+
+**output in web**: (click on about) http://localhost:5173/about
+
+```
+this is About sharath and he is in 7a
+```
 
 
 
