@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import Navbar from './components/Navbar'
+import { Home } from './components/Home'
+import {  Routes, Route } from "react-router";
+import About from './components/About'
 // import './App.css'
 
 function App() {
@@ -8,9 +12,14 @@ function App() {
 
   return (
     <>
-      <div>
-        <h2>Hello react app </h2>
-      </div>
+    
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+
+    
     </>
   )
 }
