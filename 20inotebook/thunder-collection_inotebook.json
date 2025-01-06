@@ -1,0 +1,94 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "inotebook",
+    "collectionId": "ff1cbc05-6f68-4d64-977a-ad6c99815b60",
+    "dateExported": "2025-01-06T17:35:38.393Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "58ae539b-3bf5-4657-9585-d7aa99e63729",
+            "colId": "ff1cbc05-6f68-4d64-977a-ad6c99815b60",
+            "containerId": "",
+            "name": "post_user_signin/create_user",
+            "url": "http://localhost:3000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2025-01-02T06:54:54.862Z",
+            "modified": "2025-01-03T13:05:15.597Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"sharath\",\n  \"email\":\"sharath@example.com\",\n  \"password\":\"demo password\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "366ad38f-f291-4baa-a4aa-86290ad2336d",
+            "colId": "ff1cbc05-6f68-4d64-977a-ad6c99815b60",
+            "containerId": "",
+            "name": "user_signin_jwt/create_user",
+            "url": "http://localhost:3000/api/auth/createuser",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2025-01-02T07:24:15.210Z",
+            "modified": "2025-01-02T12:53:31.297Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"neha\",\n  \"email\":\"neha@demo.com\",\n  \"password\":\"newpasswordc\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "235c9582-9309-4b23-a8a6-f5acf8f3caab",
+            "colId": "ff1cbc05-6f68-4d64-977a-ad6c99815b60",
+            "containerId": "",
+            "name": "login",
+            "url": "http://localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2025-01-02T08:06:40.237Z",
+            "modified": "2025-01-03T14:52:19.479Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"sharath@example.com\",\n  \"password\": \"demo password\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "14cd8ee3-acbf-4bc7-9d1d-1690335e51c2",
+            "colId": "ff1cbc05-6f68-4d64-977a-ad6c99815b60",
+            "containerId": "",
+            "name": "getuser",
+            "url": "http://localhost:3000/api/auth/getuser",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2025-01-03T09:56:48.716Z",
+            "modified": "2025-01-03T10:52:27.171Z",
+            "headers": [
+                {
+                    "name": "auth-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRm91bmQiOnsiaWQiOiI2Nzc2NDMwNTc1ZWRkZTNkNGUwMTcwZjcifSwiaWF0IjoxNzM1ODk4MTkwfQ.uCk6vV2Bv8HvR8PhyRyG0cmPgdIjjI-1kAWpBOc_qTI"
+                }
+            ]
+        }
+    ],
+    "ref": "SzHiOfrQqT-20X_tgxBmaRPRrFzmzECOsarrQim8gpVdZcKdLF-JLn7SspOs_TKpJEZzyhJjjdBIMu-JeALfMg"
+}
