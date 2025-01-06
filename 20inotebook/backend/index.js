@@ -3,7 +3,7 @@ const connectToMongo = require('./db.js')
 const express = require('express')
 // import express from 'express'
 const app = express()
-const port = 3000
+const port = 3212
 
 connectToMongo();
 

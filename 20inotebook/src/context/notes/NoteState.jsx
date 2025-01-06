@@ -30,6 +30,24 @@ const NoteState = (props) => {
             "tag": "first mongodb",
             "date": "2025-01-06T08:30:16.360Z",
             "__v": 0
+        },
+        {
+            "_id": "677b9486bc66cd668f5e2887",
+            "user": "6777e08b593ad2450851ce49",
+            "title": "sharath second note",
+            "description": "this is a second sample note description of sharath note",
+            "tag": "first mongodb",
+            "date": "2025-01-06T08:29:58.116Z",
+            "__v": 0
+        },
+        {
+            "_id": "677b9498bc66cd668f5e288a",
+            "user": "6777e08b593ad2450851ce49",
+            "title": "sharath third note",
+            "description": "this is a third sample note description of sharath note",
+            "tag": "first mongodb",
+            "date": "2025-01-06T08:30:16.360Z",
+            "__v": 0
         }
     ]
 

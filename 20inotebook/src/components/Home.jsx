@@ -1,10 +1,8 @@
-import contextValue from '../context/notes/NoteContext.jsx';
-import React, {useContext} from 'react'
+
+import Notes from './Notes.jsx';
 
 export const Home = () => {
-    const context  = useContext(contextValue);
-
-    const {notes, setNotes} = context;
+    
     return (
         <div>
             <h1>Add a note</h1>
@@ -26,12 +24,7 @@ export const Home = () => {
             </form>
 
             <hr />
-            <h2>Your notes</h2>
-            {
-                notes.map((note) => {
-                    return note.title;
-                } )
-            }
+            <Notes/>
         </div>
     )
 }
