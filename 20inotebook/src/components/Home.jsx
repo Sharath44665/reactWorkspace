@@ -1,10 +1,11 @@
-
+import MyAlert from './MyAlert.jsx';
 import Notes from './Notes.jsx';
 
 export const Home = () => {
     
     return (
         <div>
+            <MyAlert message="this is demo alert" />
             <h1>Add a note</h1>
             <form>
                 <div className="mb-3">
