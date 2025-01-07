@@ -99,6 +99,7 @@ router.post( '/login', [
 // getuser router
 router.post('/getuser', fetchUser, async (req, res) => {
     try{
+        // console.log(req)
         const userid = req.userFound.id;
         const userdata = await User.findById(userid).select('-password') // only exclude password and select everything
         res.send(userdata)

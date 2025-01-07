@@ -56,7 +56,7 @@ router.put('/update/:id', fetchuser, async (req, res) => {
         if (description) { newNote.description = description }
         if (tag) { newNote.tag = tag }
 
-        console.log(newNote);
+        // console.log(newNote);
 
         // console.log(req.params.id)
         let note = await Notes.findById(req.params.id) // id coming from '/update:id'
@@ -73,8 +73,8 @@ router.put('/update/:id', fetchuser, async (req, res) => {
 
 
         // note = await Notes.findByIdAndUpdate( req.params.id, { $set: newNote }, { new:true } )
-        console.log('--------------')
-        console.log(newNote)
+        // console.log('--------------')
+        // console.log(newNote)
         note = await Notes.findByIdAndUpdate(req.params.id, newNote, { new: true })
 
         res.json({ msg: 'update success.', data: note })

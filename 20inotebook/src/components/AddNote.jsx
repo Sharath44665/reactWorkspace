@@ -13,9 +13,9 @@ function AddNote() {
     }
 
     const onChange = (e) => {
-        console.log(e)
+        
         setNote({ ...note, [e.target.name]: e.target.value })
-        console.log(note)
+        
     }
     return (
         <div>
@@ -23,13 +23,13 @@ function AddNote() {
             <h1>Add a note</h1>
             <form>
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label" name="title" >Title</label>
-                    <input type="text" className="form-control" id="title" aria-describedby="emailHelp" onChange={onChange} />
+                    <label htmlFor="title" className="form-label"  >Title</label>
+                    <input type="text" className="form-control" id="title" name="title" aria-describedby="emailHelp" onChange={onChange} />
 
                 </div>
                 <div className="mb-3">
                     <label htmlFor="description" className="form-label">Description</label>
-                    <input type="text" className="form-control" id="description" name="description" />
+                    <input type="text" className="form-control" id="description" name="description" onChange={onChange} />
                 </div>
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1" />
