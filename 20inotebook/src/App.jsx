@@ -6,7 +6,7 @@ import { Home } from './components/Home'
 import { Routes, Route } from "react-router";
 import About from './components/About'
 import NoteState from './context/notes/NoteState'
-// import './App.css'
+import './App.css'
 
 function App() {
 

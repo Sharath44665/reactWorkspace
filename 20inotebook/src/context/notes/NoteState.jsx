@@ -55,6 +55,7 @@ const NoteState = (props) => {
     const [notes, setNotes] = useState(notesInitial)
 
     const addNote =(title, description, tag) =>{
+        // TODO: API Call
         const note = {
             "_id": "67d7b9498bc66cd668f5e288a",
             "user": "6777e08b593ad2450851ce49",
@@ -71,8 +72,12 @@ const NoteState = (props) => {
     const editNote =(id) =>{
         
     }
-
+    
     const deleteNote =(id) =>{
+        // TODO: API Call
+        console.log(`your id: ${id}`)
+        const newNotes = notes.filter( (note) =>  note._id  !==  id ) // return everything except the id selected for deleting
+        setNotes(newNotes)
         
     }
     

@@ -1,17 +1,23 @@
+import { useContext } from "react"
+import NoteContext from "../context/notes/NoteContext"
 
 function NoteItem(props) {
-    const { note } = props
+    const context = useContext(NoteContext)
+    const { deleteNote } = context
+    const { note } = props;
     return (
         <div className='col my-3'>
             <div className="card my-3" >
                 <div className="card-body">
                     <h5 className="card-title">{note.title}
-                        <a href='#'>
-                            <i className="bi bi-pencil-square mx-2"></i>
-                        </a>
-                        <a href='#'>
-                            <i className="bi bi-trash3"></i>
-                        </a>
+
+                        <i className="bi bi-pencil-square mx-2"></i>
+
+
+                        <i className="bi bi-trash3" onClick={() => {
+                            return deleteNote(note._id)
+                        }}></i>
+
                     </h5>
 
                     <h6 className="card-subtitle mb-2 text-body-secondary">
