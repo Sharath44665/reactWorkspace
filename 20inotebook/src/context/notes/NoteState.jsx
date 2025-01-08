@@ -3,56 +3,26 @@ import NoteContext from "./NoteContext";
 
 // dont forget to check the commits
 const NoteState = (props) => {
-    const notesInitial = [
-        {
-            "_id": "677b946ebc66cd668f5e2884",
-            "user": "6777e08b593ad2450851ce49",
-            "title": "sharath note",
-            "description": "this is a sample note description of sharath note",
-            "tag": "first mongodb",
-            "date": "2025-01-06T08:29:34.674Z",
-            "__v": 0
-        },
-        {
-            "_id": "677b9486bc66cd668f5e2887",
-            "user": "6777e08b593ad2450851ce49",
-            "title": "sharath second note",
-            "description": "this is a second sample note description of sharath note",
-            "tag": "first mongodb",
-            "date": "2025-01-06T08:29:58.116Z",
-            "__v": 0
-        },
-        {
-            "_id": "677b9498bc66cd668f5e288a",
-            "user": "6777e08b593ad2450851ce49",
-            "title": "sharath third note",
-            "description": "this is a third sample note description of sharath note",
-            "tag": "first mongodb",
-            "date": "2025-01-06T08:30:16.360Z",
-            "__v": 0
-        },
-        {
-            "_id": "67dd7b9486bc66cd668f5e2887",
-            "user": "6777e08b593ad2450851ce49",
-            "title": "sharath second note",
-            "description": "this is a second sample note description of sharath note",
-            "tag": "first mongodb",
-            "date": "2025-01-06T08:29:58.116Z",
-            "__v": 0
-        },
-        {
-            "_id": "67d7b9498bc66cd668f5e288a",
-            "user": "6777e08b593ad2450851ce49",
-            "title": "sharath third note",
-            "description": "this is a third sample note description of sharath note",
-            "tag": "first mongodb",
-            "date": "2025-01-06T08:30:16.360Z",
-            "__v": 0
-        }
-    ]
-
-
+    const host = 'http://localhost:3000';
+    const notesInitial = []
     const [notes, setNotes] = useState(notesInitial)
+
+    
+    const getNotes = async () => {
+        const response = await fetch(`${host}/api/notes/all`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRm91bmQiOnsiaWQiOiI2NzdkMTZjNDY0NWRlYmI4MzU0MTFhMjcifSwiaWF0IjoxNzM2MzIwNjUyfQ.9sVV9FBZgowTcG7YRuEnA_VVcraoo3g2MmXOzIAPmTc'
+
+            }
+        });
+        const json = await response.json()
+        // console.log(json.data)
+        setNotes(json.data)
+    }
+
+   
 
     const addNote =(title, description, tag) =>{
         // TODO: API Call
@@ -69,7 +39,7 @@ const NoteState = (props) => {
 
     }
 
-    const editNote =(id) =>{
+    const editNote =(id, title, description, tag) =>{
         
     }
     
@@ -82,7 +52,7 @@ const NoteState = (props) => {
     }
     
     return (
-        <NoteContext.Provider value={{notes, addNote, editNote, deleteNote}} >
+        <NoteContext.Provider value={{notes, addNote, editNote, deleteNote, getNotes}} >
             {props.children}
         </NoteContext.Provider>
     )
