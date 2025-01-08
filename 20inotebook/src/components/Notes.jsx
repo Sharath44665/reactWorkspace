@@ -6,8 +6,11 @@ import NoteContext from '../context/notes/NoteContext.jsx';
 
 function Notes() {
     const context = useContext(NoteContext);
-    const { notes, getNotes } = context;
-    const [note, setNote] = useState({ etitle: "", edescription: "", etag: "default" });
+    const { notes, getNotes, editNote } = context;
+
+    const [note, setNote] = useState({ id: "",  etitle: "", edescription: "", etag: "default" });
+    const ref = useRef(null)
+    const closeRef = useRef(null)
 
     useEffect(() => {
         getNotes()
@@ -19,22 +22,19 @@ function Notes() {
     const updateNote = (currentNote) => {
         ref.current.click()
         setNote({
+            id:currentNote._id,
             etitle:currentNote.title, 
             edescription: currentNote.description,
             etag: currentNote.tag
         })
     }
 
-    const ref = useRef(null)
-
     
 
     const handleClick = (e) => {
-        console.log('update note---')
-        console.log(note)
-        e.preventDefault();
         
-        
+        editNote(note.id, note.etitle, note.edescription, note.etag);
+        closeRef.current.click();
     }
 
     const onChange = (e) => {
@@ -77,8 +77,8 @@ function Notes() {
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-primary" onClick={handleClick}>Update</button>
+                            <button ref={closeRef} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button  type="button" className="btn btn-primary" onClick={handleClick}>Update</button>
                         </div>
                     </div>
                 </div>
@@ -87,6 +87,7 @@ function Notes() {
 
                 <div className='row my-3'>
                     <h2>Your notes</h2>
+                    {notes.length === 0 && 'No notes to display '}
                     {
                         notes.map((note) => {
                             return <NoteItem key={note._id} note={note} updateNote={updateNote} />;

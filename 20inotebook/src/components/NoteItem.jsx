@@ -5,8 +5,9 @@ function NoteItem(props) {
     const context = useContext(NoteContext)
     const { deleteNote } = context
     const { note, updateNote } = props;
+    
     return (
-        <div className='col my-3'>
+        <div className='col-md-3'>
             <div className="card my-3" >
                 <div className="card-body">
                     <h5 className="card-title">{note.title}
